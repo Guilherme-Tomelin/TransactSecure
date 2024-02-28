@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Importar Transações</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>IMPORTAR TRANSAÇÕES</h1>
+    <form method="POST" enctype="multipart/form-data" id="file-upload-form" class="uploader">
+        {% csrf_token %}
+        {% if error %}
+        <div class="error-message">
+            {{ error }}
+        </div>
+        {% endif %}
+        <input id="file-upload" type="file" name="fileUpload" />
+        
+        <label for="file-upload" id="file-drag">
+            Selecione um arquivo ou arraste-o aqui
+        </label>
+
+        <button type="submit" class="button">Importar</button>
+    </form>
+</div>
+
+<script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
